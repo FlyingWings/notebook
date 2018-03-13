@@ -45,7 +45,7 @@
 - `sed`: (preg_replace)  
 正则替换指定内容，`sed 's/text/replace_text/' file`, 结果输出（不更改原文件）  
 -i：替换以后把结果写回原文件  
-g：全局替换:`sed 's/text/replace_text/g' file`//加了global之后全局替换  
+g：全局替换:`sed 's/text/replace_text/g'file`//加了global之后全局替换  
 d：删除指定pattern： `sed /^$/d`//移除空白行  
 s：将文件按行分割并传入(替换的时候必须用，否则会报错)  
 &：查找到的内容`sed s/\w*/{&}/g`//把所有的字母值加{}  
