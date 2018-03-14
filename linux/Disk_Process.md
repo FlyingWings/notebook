@@ -56,7 +56,7 @@ KiB Swap: 25115644 total,        0 used, 25115644 free.  2041396 cached Mem
 - VIRT：虚存
 - RES： 物理内存
 - SHR：共享内存大小
-- S：status，D: 不可中断的睡眠 | R: 运行 | S: 睡眠  | T: 跟踪/停止 | Z:僵尸
+- S：status，D: 不可中断的睡眠 | R: 运行或等待（都是好的） | S: 睡眠  | T: 跟踪/停止 | Z:僵尸
 
 
 
