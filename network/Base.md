@@ -25,5 +25,26 @@
 - 数据链路层：  硬件层面的传输过程
 ![](../pics/protocols_tcp_ip.jpg)
 
+## URI
+
+标准格式： http://user:pass@example.com:80/index.html?ab=1#href=rpc
+    
+    http-> 协议名（可选）
+    user-> 用户名（可选）
+    pass-> 密码（可选）
+    example.com-> 域名
+    80->端口号（可选）
+    index.html->请求路径
+    ab=1->请求参数(GET)
+    href=rpc->片段标识符，锚点
+    
+一般情况下，协议会自动给定访问端口，例如:
+    
+    http->80
+    https->443
+    ftp->21
+    ssh->22
+
+
 
 
