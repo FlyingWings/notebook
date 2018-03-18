@@ -25,3 +25,24 @@
     请求的URI所对应的资源已经被永远转移到了另一个位置，请去另一个位置访问  
     应用场景：域名重定向（对多个域名对应一个位置的情况）
     
+    - 302 Found  
+    临时性重定向，要求浏览器去新的URI访问
+    
+    - 303 See Other
+    与上者类似，但是要求客户端要用GET
+    
+    - 304 Not Modified  
+    允许访问，但不符合请求头中的条件，如If-Match, If-None-Match等
+    
+    - 307 Temporary Redirect（同302）
+    
+- 4xx 客户端错误 ——服务器无法处理请求
+    - 400 Bad Request  
+    请求报文中出现错误（请求的内容有问题）
+    
+    - 401 Unauthorized  
+    请求未获授权
+    
+    - 403 Forbidden  
+    
+    
