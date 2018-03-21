@@ -1,5 +1,15 @@
 # 磁盘管理：
-- `df`
+- `df`  
+-h 以人类可读的方式显示磁盘挂载/占用情况
+- `fdisk`:磁盘分区工具  
+`fdisk /dev/device_name`  
+-l: 列出所有磁盘（硬件链接）
+
+- `mkfs.ex4`: 将分区格式化为ex4的文件格式，其他格式以此类推
+
+- `mount`: 将已经分好区的盘挂载到系统目录上  
+`mount /dev/device_name /target_address`  
+自动挂载: 修改`/etc/fstab`，配置同上
 
 - tar
 
