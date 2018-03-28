@@ -191,3 +191,17 @@ ii.响应  HTTP/1.1 200 OK
         - Content-Length（实体长度）
         - Content-Type（资源类型）
         - Expires（资源过期日期）
+
+- 通用首部：
+    - Cache-Control 缓存机制
+    - Connection
+    - Date
+    - Upgrade
+    
+- 请求首部
+
+- 响应首部
+
+- 实体首部
+
+- Cookie相关
