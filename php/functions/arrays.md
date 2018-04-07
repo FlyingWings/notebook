@@ -10,7 +10,8 @@
     $value = [];
     var_dump(array_fill_keys($keys, $value));
     
-    //array(3){
+    结果：
+    array(3){
         ['a']=>array(0){}
         ['b']=>array(0){}
         ['c']=>array(0){}
