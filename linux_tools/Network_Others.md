@@ -8,7 +8,18 @@
 
 - `host`: DNS查询
 
-
+- `ssh`: ssh访问+ssh隧道
+    - -i: 利用密钥文件
+    - -l: 远程用户名
+    - -f: ssh后执行后台程序
+    - -N: 不执行远程命令(端口转发专用)
+    - -R: 端口转发用，格式如下（笑）
+    - -D:
+    - 常见用法：
+        - 直接ssh访问: `ssh test.com`
+        - 利用密钥访问: `ssh -i ~/.ssh/key_file test.com`
+        - 端口转发（本地到远程）: `ssh -NfR $remote_port:localhost:$local_port $remote_addr` 
+        - 搭建SSH SOCKS5通道: `ssh -N -f -D $local_port $remote_addr`
 
 # 用户管理
 #### 用户的增删改查
@@ -30,6 +41,7 @@
 
 - `usermod`: 更改用户信息，常用参数：  
 -d: 更改主目录，默认/home/username
+
 
 
 # 环境变量

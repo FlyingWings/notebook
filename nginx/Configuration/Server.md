@@ -73,4 +73,14 @@ location /index {
 error_page 404 /404.html;
 error_page 500 502 503 504 /50x.html;
 error_page 403  http://test.com/forbidden.html;
-  
+```
+
+### try_files: 顺序访问path，找不到则重定向到最后的参数URI
+```
+try_files test.html $uri $uri/index.html $uri.html @other;
+location @other {
+    proxy_pass  http://test.html;
+}
+```
+
+
