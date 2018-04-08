@@ -32,17 +32,23 @@ http {
     server {
         listen 80;
         server_name localhost;
-        root /var/www/html;
+        root /var/www/html; # 默认服务器ROOT
         index index.php;
-        location / {
-            index index.php;
-        }
+        
         
         location /test {
             index index.html;
-            root /var/www/html/use;
+            root /var/www/html/use; # 访问的默认路径是/var/www/html/use/test
         }
         
+        location /test-alias {
+            root /var/www/html/test-alias;
+        }
+        
+        
+        location / {
+            index index.php;
+        }
         error_page 404 /404.html;
             location = /40x.html {
         }
@@ -50,6 +56,7 @@ http {
         error_page 500 502 503 504 /50x.html;
             location = /50x.html {
         }
+        
 }
 
 
