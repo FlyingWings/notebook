@@ -21,10 +21,13 @@
 - openssl（https, sha1, md5）
 
 ## 相对应的内核参数优化
-/etc/sysctl.conf
-- fs.file-max = 999999 # 打开文件最大值（限制最大连接数）
-- net.tcp_tw_reuse = 1 # 允许将TIME-WAIT状态的socket重用于新的连接
-- net.tcp_keepalive_time = 600 # keepalive启用时，TCP 发送keepalive信息的频率，默认7200,小一点可以清理无效连接
-- net.tcp_max_syn_backlog = 1024 #TCP三次握手时接受SYN队列的最大长度，大一些可以保证Nginx繁忙时，Linux不至于丢失客户端的连接请求
-- net.ipv4.ip_local_port_range 9000 65535 # 本地端口的取值范围
-以sysctl -p重启配置
+ulimit -a: 查看所有配置项目
+
+需要修改的是其中的open-files：   
+/etc/security/limits.conf  
+增加以下内容：  
+@users soft nofile 100001  
+@users hard nofile 100002  
+@root soft nofile 100001  
+@root hard nofile 100002  
+设置最大打开文件数目
