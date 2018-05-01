@@ -45,6 +45,17 @@ http {
             root /var/www/html/test-alias;
         }
         
+        if ( !-e $request_filename) { # 文件名不存在，则重定向到index.php处理
+            rewrite ^(.*)$ /index.php/$1 last;
+        }
+        
+        location ~* ^.+\.(jpg|png|gif)$ { # 防盗链
+            valid_referers none blocked server_names *.test.com;
+            if ($invalid_referer) {
+                rewrite ^/ http://test.com/assets/img/forbidden.jpg;
+            }
+        }
+        
         
         location / {
             index index.php;
