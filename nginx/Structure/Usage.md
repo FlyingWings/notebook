@@ -1,7 +1,7 @@
 ## 基本用途
 
-#### 重定向
-
+### 地址转发
+- 概念：不改变地址栏的显示；只产生一次网络请求；比较快
 - upstream 配置块，与http，server同级，作用为将请求转发给配置块内的服务器
     - 语法格式: `upstream name { ... }`
     - 子配置块：server，用于设置组内服务器的信息，`server address [parameters];`
@@ -33,5 +33,78 @@
             server c.test.com;
         }
     ```
-#### 重写
-- Rewrite配置项，用于
+### 地址重写
+- 概念：类似于3xx，重定向会产生两次请求；比较慢
+- Rewrite配置项，用于指定虚拟服务器的路由重置
+    - 子配置参数
+        - if：对条件判断选择不同的配置，语法格式`if (condition) { ... }`
+            - 逻辑判断
+                ```
+                if ($request_method = POST) {
+                    return 404;
+                }
+                
+                if ( $type ) { # 变量存在且不为0
+                    # do something
+                }
+                ```
+            - 正则判断
+                - Nginx里面正则的条件：`~：大小写敏感；~*：大小写不敏感`
+                ```
+                if ( $request_uri ~* ^\/.*) {
+                    rewrite /index.php/$1;
+                }
+                ```
+            - 请求的文件是否存在
+                - `-f`, `-d`,文件，文件夹是否存在
+                - `-e`：文件或目录是否存在
+                    ```
+                    if ( !-e $request_name) {
+                        rewrite ^(.*)$ /index.php/$1;
+                        break;
+                    }
+                    ```
+                - `-x`：文件是否可执行
+        - break：跳出当前配置块
+        - return：直接返回响应内容，无视后续的所有配置
+            ```
+            if ( !-e $request_name) {
+                return 404;
+            }
+            ```
+        - rewrite：用于对符合正则格式的请求，替换为另一种格式，结构：`rewrite regex replacement [flag]`
+            - regex：相对URI对应的格式，不包括host地址
+            - replacement：需要重定向的地址
+            - flag：用于设置rewrite后对URI的处理方式
+                - last：本location块中处理这一次，处理结果跳出给其他location块处理
+                - break：本块中处理一次，并且跳出（不在其他块中处理）
+                - redirect：302重定向，暂时重定向
+                - permanent：301重定向，永久重定向
+
+    - Rewrite全局变量
+        - `$args`：所有的查询参数
+        - `$host`：请求的主机名
+        - `$request_method`：请求方式（GET, POST）
+        - `$request_filename`：请求文件名
+        - `$request_uri`：请求URI（文件名+参数）
+        - `$scheme`：请求协议，http，https等
+       
+    - 应用：
+        - 多域名
+        - 防盗链：用Nginx自带的valid_referers指令对Referer头里面的值进行验证
+            - `valid_referers none | blocked | server_names string ...;`
+            - 参数释义：以上都是可以并存的
+                - `none`: 头部不存在情况，加入屏蔽器
+                - `blocked`: 头部不存在或者被删除/伪装，此时不以http://或者https://开头
+                - `server_names`: 后面给定的string以外的，屏蔽
+            - 例子：
+                ```
+                location ~* ^.+\.(jpg|png|gif) {
+                    valid_referers none blocked server_names *.test.com;
+                    if ($invalid_referer) {
+                        rewrite ^/ http://test.com/assets/img/forbidden.jpg;
+                    }
+                ```
+                
+            
+            
