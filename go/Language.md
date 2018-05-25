@@ -44,4 +44,8 @@
    t.PUT() //PUT是父类Test的成员函数
    ```
    
-  
+- goroutine
+    - sync.WaitGroup
+    - 一个routine生成，Add
+    - 一个完成，Done
+    - 要结束的话，Wait()

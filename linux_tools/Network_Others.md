@@ -20,7 +20,16 @@
         - 利用密钥访问: `ssh -i ~/.ssh/key_file test.com`
         - 端口转发（本地到远程）: `ssh -NfR $remote_port:localhost:$local_port $remote_addr` 
         - 搭建SSH SOCKS5通道: `ssh -N -f -D $local_port $remote_addr`
+        
+- `firewalld`: 管理防火墙
+    - `systemctl stop firewalld`: 端口ping不通，或者no route to xxx的时候，关闭防火墙
 
+
+- 搭建私有网络：
+    1. 网卡设备
+    2. 监听网卡状态（`ifconfig -a`, `ifconfig`在`net-tools`里)
+    3. 在`/etc/sysconfig/network-scripts/`下，找到`ifcfg-ethx`对象的网卡文件，配置静态IP
+    4. 重启网络服务
 # 用户管理
 #### 用户的增删改查
 
