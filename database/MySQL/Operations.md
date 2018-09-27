@@ -2,7 +2,7 @@
 
 #### 权限
 - GRANT
-    - 例子：`grant select, insert, update, delete on db_name.*(table name) to user_name@'remote_addr' identified by 'password';`
+    - 例子：`grant select, insert, update, delete on *.*(table name) to user_name@'remote_addr' identified by 'password';`
     - 解释： 为从`remote_addr`上访问的用户`user_name`赋予数据库`db_name`上的CRUD权限，以密码`password`作为验证
     - 用途：
         - 增加用户
