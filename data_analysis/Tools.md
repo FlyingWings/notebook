@@ -35,7 +35,15 @@
         ```
         data[["score", "name"]] # 选择score和name两列（当然也可以只选一列）
         ```
+        - 条件选取
+        ```
+        condition = data['score'] > 7 # 获取一个条件列
+        # 条件列里面都是1/0, 支持条件列之间的逻辑运算
+        data_conditioned = data[condition] # 根据条件列获取值
+        ```
+        
 - 基本单元：Series: 一个单独的一列
-    - 构造方式：line = pandas.Series([1,2,3])
+    - 构造方式：`line = pandas.Series([1,2,3])`
 - 组成结构： 多个Series组成的DataFrame
-    - 构造方式：df = pandas.
+    - 构造方式：`df = pandas.DataFrame(["id", 1, 2], ['name', 'a', 'b'])`
+    
