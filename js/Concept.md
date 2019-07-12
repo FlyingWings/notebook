@@ -1,4 +1,4 @@
-基础概念
+ 基础概念
 ====
 
 ### 变量
@@ -13,11 +13,13 @@
 3. 变量类型：
     - 原始值：存在栈中，变量直接访问内存中位置【如果是原始类型一般直接存在栈中】
         - 原始类型：
+            - null: typeof null === "object"
             - undefined
             - boolean
             - number
             - string
             - object: 对象或者是null
+            - symbol
     - 引用值：存在堆中，变量保存的是指针
     
     
