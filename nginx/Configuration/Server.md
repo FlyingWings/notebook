@@ -12,7 +12,8 @@ listen 80 default_server;
 - default_server: 同上
 - bgacklog=num: 建立连接的过程中，还没有建立fd，于是在backlog队列中存放新连接；默认为-1
 - deferred: 当请求建立，三次握手完成，且真的发送请求时，才唤醒worker进程处理该连接；在请求建立但未发送数据时，不唤醒；（用于大并发优化）
-- bind: 未知
+- bind: 绑定端口/地址对，如127.0.0.1:8080.同个端口监听多个地址时生效
+- ssl：显式声明基于SSL协议
 
 ### server_name: 主机名
 ```

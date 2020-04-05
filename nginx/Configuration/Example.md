@@ -1,6 +1,6 @@
-# Nginx实例配置
-
-
+Nginx实例配置
+----
+## 配置示例
 ```lang=c
 
 user nginx nginx; # 用户名+用户组
@@ -9,7 +9,8 @@ worker_cpu_affinity 0001 0010; # worker进程绑定的CPU核ID
 error_log /var/log/nginx/error.log; # 错误日志位置
 
 pid /run/nginx.pid; # master进程ID的存放位置（里面只有一个ID）
-worker_rlimit_nofile 65535; # worker进程最大打开文件描述符数量
+worker_rlimit_nofile 65535; # worker进程最大打开文件描述符数量(单个子进程最大连接数）
+
 
 # 加载额外模块，例如IP解析-》地理位置
 load_module "/usr/lib64/nginx/modules/ngx_http_geoip_module.so";
@@ -69,6 +70,6 @@ http {
         }
         
 }
-
-
-{"id":"fdsfs-2cvwefs-dsafs","subnets":[{"id":"fdfdsfas-23fds"
+```
+## 配置块内容
+- [Server配置块](/nginx/Configuration/Server.md)
