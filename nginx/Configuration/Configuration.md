@@ -13,8 +13,7 @@
 - 优化性能用
 - 事件类（？）
     
-
-#### 调试+定位问题用
+### 调试+定位问题用
 - 守护进程运行:  
 daemon on|off;  
 默认：daemon on;  
@@ -41,7 +40,7 @@ events {
 ``` 
 这样就会对指定地址的请求给出debug级别的报错，而其他的沿用原来的error_log设置
 
-#### 正常运行用
+### 正常运行用
 
 - 定义环境变量  
 env VAR=VALUE  
@@ -67,7 +66,7 @@ user username[groupname];
 worker_rlimit_nofile limit;
 例：worker_rlimit_nofile_limit 65535;
 
-#### 优化性能用
+### 优化性能用
 - worker进程个数  
 worker_processes number;
 默认：worker_processes 1; # 最好与CPU核的数量一致  
@@ -77,12 +76,16 @@ worker_cpu_affinity cpumask queue;
 例如：`worker_cpu_affinity 0001 0010 0100 1000;`  
 用于绑定进程到CPU核上，确保防止抢占
 
+- worker_priority nginx进程优先级
+worker_priority nice;
+设置进程优先级，-20~+19之间，越小越高，需要大于-5(系统内核进程的优先级)
+
 - worker进程优先级设置  
 worker_priority nice;  
 默认：worker_priority 0;
 用于设置进程的nice优先级，-20~+19，从大到小，可以调整略小，但不要设置<-5(内核进程)
 
-#### 事件类配置项(在event配置块中的)
+### 事件类配置项(在event配置块中的)
 - 是否打开accept锁  
 accept_mutex on|off
 默认：accept_mutex on;  
@@ -106,4 +109,5 @@ worker_connections number;(上面提过了)
 worker_connections 65535;
 
 
-
+## 配置示例
+- 见[Example](/nginx/Configuration/Example.md)

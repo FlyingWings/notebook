@@ -17,3 +17,8 @@
     - gzip_types mime-type; gzip的文档类型，如text/plain image/* application/json
     - gzip_vary on; 是否发送Vary: Accept-Encoding的响应头，从而会在Content-Encoding头部里加上gzip
 
+## 模块调用流程
+1. worker进程在循环中调用事件模块来获取网络事件
+2. 检测到有TCP请求（SYN包),建立连接，根据配置交由HTTP框架处理
+3. HTTP框架获取头部后分发到具体的HTTP模块处理
+4. 处理完后返回给HTTP框架，最后返回
