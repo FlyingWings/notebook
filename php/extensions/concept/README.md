@@ -1,6 +1,6 @@
 PHP扩展概念(以swoole为例)
 ---
-1. 定义函数表: zend_function_entry
+1. 定义函数表,注册这些函数: zend_function_entry
 2. 定义扩展函数和函数参数
     - 工具：PHP_FE(函数名，参数类型)
     - 语法：
@@ -30,3 +30,10 @@ PHP扩展概念(以swoole为例)
        RETURN_STRING("some thing")
     }
     ```
+   
+5. 定义类扩展方法和参数
+    - 工具：PHP_ME(类名，函数名,参数定义)
+6. 定义方法体
+    - 方法：PHP_METHOD(类名，方法名);
+    
+    7. 
